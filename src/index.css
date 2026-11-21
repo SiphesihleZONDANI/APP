@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased font-sans transition-colors duration-200;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  ::selection {
+    @apply bg-rose-200 text-rose-900;
+  }
+}
+
+/* Safe area support for notched phones (iPhone etc.) */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Custom leaflet pulse marker animation */
+.sos-pulse-marker {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #dc2626;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 10px rgba(220, 38, 38, 0.8);
+  position: relative;
+}
+
+.sos-pulse-marker::after {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: -12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 3px solid #dc2626;
+  animation: sos-ripple 1.5s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+@keyframes sos-ripple {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Police unit marker */
+.police-marker {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #2563eb;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 0 12px rgba(37, 99, 235, 0.8);
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(156, 163, 175, 0.5);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(156, 163, 175, 0.8);
+}
